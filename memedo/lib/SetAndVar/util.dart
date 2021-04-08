@@ -1,5 +1,11 @@
+import 'dart:typed_data';
+import 'dart:io' as Io;
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:gallery_saver_safety/gallery_saver_safety.dart';
 import 'package:memedo/SetAndVar/variables.dart';
+import 'package:path_provider/path_provider.dart';
 
 Color choosecolor(String _selectedColors){
   if(_selectedColors == "Black"){
@@ -61,4 +67,40 @@ List<DropdownMenuItem<String>> buildAndGetDropDownMenuItemstext(List text) {
     )));
   }
   return items;
+}
+
+Widget getthebutton(BuildContext context){
+  if(visible){
+    return Container(
+      padding: EdgeInsets.fromLTRB(0.0, 0.0, (MediaQuery.of(context).size.width)/2 - 45, 0.0),
+      child: Container(
+        height: 60,
+        width: 60,
+        child: FloatingActionButton(
+          backgroundColor: Colors.red[900],
+          onPressed: (){
+
+          },
+          child: Icon(Icons.add_circle_outline,
+            size: 50,),
+        ),
+      ),
+    );
+  }
+}
+
+Future<bool> takeScreenShot(GlobalKey globalKey) async{
+  int randomNumber = random.nextInt(1000);
+  RenderRepaintBoundary boundary = globalKey.currentContext.findRenderObject();
+  ui.Image image = await boundary.toImage(pixelRatio: 5.0);
+  final directory = (await getApplicationDocumentsDirectory()).path;
+  ByteData byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+  Uint8List pngBytes = byteData.buffer.asUint8List();
+  Io.File imgFile = new Io.File('$directory/memedo$randomNumber.jpg');
+  imgFile.writeAsBytes(pngBytes);
+  imgFile.writeAsBytesSync(pngBytes);
+  GallerySaver.saveImage(imgFile.path, albumName: "memedo").then((value){
+    return value;
+  });
+  return true;
 }

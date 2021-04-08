@@ -2,8 +2,6 @@ import 'dart:math';
 import 'package:memedo/SetAndVar/util.dart';
 import 'package:memedo/SetAndVar/variables.dart';
 import 'package:flutter/material.dart';
-import 'package:memedo/SetAndVar/variables.dart';
-import 'dart:io' as Io;
 
 class HomePage extends StatefulWidget {
   @override
@@ -48,12 +46,11 @@ class _HomePageState extends State<HomePage> {
       key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Center(child: Text('MeMe Maker',
+        title: Center(child: Text('MeMeDo',
           style: TextStyle(
-            fontFamily: 'meme',
+            fontFamily: 'Marker',
             fontSize: 30,
-            fontWeight: FontWeight.w500,
-            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.w100,
           ),
         ),),
       ),
@@ -133,16 +130,19 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              new TextField(
-                onTap: () {visible = false;},
-                onEditingComplete: () {visible = true;},
-                onChanged: (val){
-                  setState(() {
-                    headtext = val;
-                  });
-                },
-                decoration: InputDecoration(
-                  hintText: "Add Text",
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: new TextField(
+                  onTap: () {visible = false;},
+                  onEditingComplete: () {visible = true;},
+                  onChanged: (val){
+                    setState(() {
+                      headtext = val;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Add Text",
+                  ),
                 ),
               ),
               Row(
@@ -246,12 +246,22 @@ class _HomePageState extends State<HomePage> {
                             duration: Duration(seconds: 3),
                           );
                           _scaffoldKey.currentState.showSnackBar(snackbar);
-                          // await takeScreenShot();
-                          final snackBar = SnackBar(
-                            content: Text("Saved."),
-                            duration: Duration(seconds: 1),
-                          );
-                          _scaffoldKey.currentState.showSnackBar(snackBar);
+                          await takeScreenShot(globalKey).then((value){
+                            if(value){
+                              final snackBar = SnackBar(
+                                content: Text("Saved."),
+                                duration: Duration(seconds: 1),
+                              );
+                              _scaffoldKey.currentState.showSnackBar(snackBar);
+                            }
+                            else{
+                              final snackBar = SnackBar(
+                                content: Text("Error! Try Again."),
+                                duration: Duration(seconds: 1),
+                              );
+                              _scaffoldKey.currentState.showSnackBar(snackBar);
+                            }
+                          });
                         },
                           child: Icon(Icons.save),
                         ),
@@ -262,7 +272,22 @@ class _HomePageState extends State<HomePage> {
                             duration: Duration(seconds: 3),
                           );
                           _scaffoldKey.currentState.showSnackBar(snackbar);
-                          // await takeScreenShot();
+                          await takeScreenShot(globalKey).then((value){
+                            if(value){
+                              final snackBar = SnackBar(
+                                content: Text("Saved."),
+                                duration: Duration(seconds: 1),
+                              );
+                              _scaffoldKey.currentState.showSnackBar(snackBar);
+                            }
+                            else{
+                              final snackBar = SnackBar(
+                                content: Text("Error! Try Again."),
+                                duration: Duration(seconds: 1),
+                              );
+                              _scaffoldKey.currentState.showSnackBar(snackBar);
+                            }
+                          });
                           final snackBar = SnackBar(
                             content: Text("Saved."),
                             duration: Duration(seconds: 1),
@@ -358,6 +383,7 @@ class _HomePageState extends State<HomePage> {
           ),
         )
       ),
+      floatingActionButton: getthebutton(context),
     );
   }
 }

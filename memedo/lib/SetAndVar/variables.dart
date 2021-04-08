@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'dart:io' as Io;
 
@@ -23,3 +25,4 @@ List Colorsi = ["Black", "Red", "Green", "White", "Yellow", "Blue", "Orange", "B
 List textstyle = ["Lobster", "Dark", "Marker", "Roboto", "Yellowtail", "Pangolin", "Piedra", "Indie", "Into_light", "Caveat"];
 List<DropdownMenuItem<String>> dropDownMenuItemsTextstyle;
 List<DropdownMenuItem<String>> dropDownMenuItems;
+Random random = new Random();
