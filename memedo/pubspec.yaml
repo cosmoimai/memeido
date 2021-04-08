@@ -49,8 +49,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - Assets/Images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -64,6 +64,43 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: write
+      fonts:
+        - asset: Assets/Fonts/PermanentMarker-Regular.ttf
+    - family: meme
+      fonts:
+        - asset: Assets/Fonts/Lobster-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: Assets/Fonts/Roboto-Black.ttf
+    - family: Yellowtail
+      fonts:
+        - asset: Assets/Fonts/Yellowtail-Regular.ttf
+    - family: Dark
+      fonts:
+        - asset: Assets/Fonts/Notable-Regular.ttf
+    - family: Marker  #write
+      fonts:
+        - asset: Assets/Fonts/PermanentMarker-Regular.ttf
+    - family: Lobster  #meme
+      fonts:
+        - asset: Assets/Fonts/Lobster-Regular.ttf
+    - family: Pangolin
+      fonts:
+        - asset: Assets/Fonts/Pangolin-Regular.ttf
+    - family: Piedra
+      fonts:
+        - asset: Assets/Fonts/Piedra-Regular.ttf
+    - family: Indie
+      fonts:
+        - asset: Assets/Fonts/IndieFlower-Regular.ttf
+    - family: Into_light
+      fonts:
+        - asset: Assets/Fonts/ShadowsIntoLight-Regular.ttf
+    - family: Caveat
+      fonts:
+        - asset: Assets/Fonts/Caveat-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
