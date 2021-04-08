@@ -132,6 +132,7 @@ class _GetImageState extends State<GetImage> {
                   setState(() {
                     index = i;
                     clearAll();
+                    image = null;
                   });
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();

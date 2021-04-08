@@ -26,4 +26,4 @@ List textstyle = ["Lobster", "Dark", "Marker", "Roboto", "Yellowtail", "Pangolin
 List<DropdownMenuItem<String>> dropDownMenuItemsTextstyle;
 List<DropdownMenuItem<String>> dropDownMenuItems;
 Random random = new Random();
-int index = 10;
+int index = 1;

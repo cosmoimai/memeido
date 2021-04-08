@@ -26,22 +26,26 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  void changedDropDownItem(String acolor) {
+  void changedDropDownItem(String acolor,var currentFocus) {
     setState(() {
       _selectedColors = acolor;
+      currentFocus.unfocus();
     });
   }
 
-  void changedDropDownItemText(String atext) {
+  void changedDropDownItemText(String atext, var currentFocus) {
     setState(() {
       _selectedText = atext;
+      currentFocus.unfocus();
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height-81;
+
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -157,6 +161,7 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         ElevatedButton(
                           onPressed: () {
+                            currentFocus.unfocus();
                           setState(() {
                             visible = true;
                             topi -= 10;
@@ -169,6 +174,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
+                            currentFocus.unfocus();
                           setState(() {
                             visible = true;
                             topi += 10;
@@ -181,6 +187,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
+                            currentFocus.unfocus();
                           setState(() {
                             visible = true;
                             sizei += 5;
@@ -193,6 +200,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
+                            currentFocus.unfocus();
                           setState(() {
                             visible = true;
                             angi -= 10;
@@ -207,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                               DropdownButton(
                                 value: _selectedColors,
                                 items: dropDownMenuItems,
-                                onChanged: changedDropDownItem,
+                                onChanged: (val) => changedDropDownItem(val, currentFocus),
                               ),
                               Icon(Icons.color_lens),
                             ],
@@ -222,6 +230,7 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         ElevatedButton(
                           onPressed: () {
+                            currentFocus.unfocus();
                           final snackbar = SnackBar(
                             content: Text("Meme Updated"),
                             duration: Duration(seconds: 2),
@@ -244,6 +253,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         ElevatedButton(
                           onPressed: () async {
+                            currentFocus.unfocus();
                           final snackbar = SnackBar(
                             content: Text("Saving . . ."),
                             duration: Duration(seconds: 3),
@@ -270,6 +280,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         ElevatedButton(
                           onPressed: () async {
+                            currentFocus.unfocus();
                           final snackbar = SnackBar(
                             content: Text("Saving . . ."),
                             duration: Duration(seconds: 3),
@@ -321,6 +332,7 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         ElevatedButton(
                           onPressed: () {
+                            currentFocus.unfocus();
                           setState(() {
                             visible = true;
                             lefti -= 10;
@@ -333,6 +345,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
+                            currentFocus.unfocus();
                           setState(() {
                             visible = true;
                             lefti += 10;
@@ -345,6 +358,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
+                            currentFocus.unfocus();
                           setState(() {
                             visible = true;
                             sizei -= 5;
@@ -357,6 +371,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
+                            currentFocus.unfocus();
                           setState(() {
                             visible = true;
                             angi += 10;
@@ -371,7 +386,7 @@ class _HomePageState extends State<HomePage> {
                               DropdownButton(
                                 value: _selectedText,
                                 items: dropDownMenuItemsTextstyle,
-                                onChanged: changedDropDownItemText,
+                                onChanged: (val) => changedDropDownItemText(val, currentFocus),
                               ),
                               Icon(Icons.text_fields),
                             ],
