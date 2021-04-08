@@ -64,69 +64,72 @@ class _HomePageState extends State<HomePage> {
               RepaintBoundary(
                 key: globalKey,
                 child: Container(
-                  width: screenWidth,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black)
+                  ),
                   height: screenHeight/2,
-                  color: Colors.white,
-                  child: Stack(
-                    children: [
-                      image == null ? Container(
-                          width: screenWidth,
-                          child: Image.asset('Assets/Images/meme.jpg',fit: BoxFit.fill,)):
-                      Center(child: Image.file(image, height: 300, width: MediaQuery.of(context).size.width,)),
-                      for (int i=0;i<total;i++)Row(
-                        children: <Widget>[
-                          Container(
-                            width: left[i],
-                          ),
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                height: top[i],
-                              ),
-                              Container(
-                                child: Transform.rotate(
-                                  angle: angle[i]*pi/180,
-                                  child: Text(
-                                    list[i],
-                                    style: TextStyle(
-                                      fontFamily: textStyle[i],
-                                      fontSize: size[i],
-                                      color: color[i],
+                  child: Center(
+                    child: Stack(
+                      children: [
+                        image == null ? Container(
+                            width: screenWidth,
+                            child: Image.asset('Assets/Images/meme'+ index.toString() + '.jpg',)):
+                        Center(child: Image.file(image, height: 300, width: MediaQuery.of(context).size.width,)),
+                        for (int i=0;i<total;i++)Row(
+                          children: <Widget>[
+                            Container(
+                              width: left[i],
+                            ),
+                            Column(
+                              children: <Widget>[
+                                Container(
+                                  height: top[i],
+                                ),
+                                Container(
+                                  child: Transform.rotate(
+                                    angle: angle[i]*pi/180,
+                                    child: Text(
+                                      list[i],
+                                      style: TextStyle(
+                                        fontFamily: textStyle[i],
+                                        fontSize: size[i],
+                                        color: color[i],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            width: lefti,
-                          ),
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                height: topi,
-                              ),
-                              Container(
-                                child: Transform.rotate(
-                                  angle: angi*pi/180,
-                                  child: Text(headtext,
-                                    style: TextStyle(
-                                      fontFamily: _selectedText,
-                                      fontSize: sizei,
-                                      color: choosecolor(_selectedColors),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              width: lefti,
+                            ),
+                            Column(
+                              children: <Widget>[
+                                Container(
+                                  height: topi,
+                                ),
+                                Container(
+                                  child: Transform.rotate(
+                                    angle: angi*pi/180,
+                                    child: Text(headtext,
+                                      style: TextStyle(
+                                        fontFamily: _selectedText,
+                                        fontSize: sizei,
+                                        color: choosecolor(_selectedColors),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

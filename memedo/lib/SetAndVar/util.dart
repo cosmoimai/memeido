@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gallery_saver_safety/gallery_saver_safety.dart';
+import 'package:memedo/SetAndVar/routes.dart';
 import 'package:memedo/SetAndVar/variables.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -78,9 +79,7 @@ Widget getthebutton(BuildContext context){
         width: 60,
         child: FloatingActionButton(
           backgroundColor: Colors.red[900],
-          onPressed: (){
-
-          },
+          onPressed: (){Navigator.pushNamed(context, getImageRouteCode);},
           child: Icon(Icons.add_circle_outline,
             size: 50,),
         ),
@@ -103,4 +102,20 @@ Future<bool> takeScreenShot(GlobalKey globalKey) async{
     return value;
   });
   return true;
+}
+
+void clearAll(){
+  list.clear();
+  left.clear();
+  top.clear();
+  size.clear();
+  angle.clear();
+  textStyle.clear();
+  color.clear();
+  headtext = "";
+  total = 0;
+  lefti = 50.0;
+  topi = 50.0;
+  sizei = 40.0;
+  angi = 0.0;
 }
