@@ -32,6 +32,7 @@ dependencies:
   url_launcher: ^6.0.3
   http: ^0.13.1
   gallery_saver_safety: ^1.0.8
+  wc_flutter_share: ^0.4.0
 
 dev_dependencies:
   flutter_test:

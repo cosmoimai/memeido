@@ -7,6 +7,7 @@ import 'package:gallery_saver_safety/gallery_saver_safety.dart';
 import 'package:memedo/SetAndVar/routes.dart';
 import 'package:memedo/SetAndVar/variables.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:wc_flutter_share/wc_flutter_share.dart';
 
 Color choosecolor(String _selectedColors){
   if(_selectedColors == "Black"){
@@ -88,7 +89,7 @@ Widget getthebutton(BuildContext context){
   }
 }
 
-Future<bool> takeScreenShot(GlobalKey globalKey) async{
+Future<bool> takeScreenShot(GlobalKey globalKey,bool share) async{
   int randomNumber = random.nextInt(1000);
   RenderRepaintBoundary boundary = globalKey.currentContext.findRenderObject();
   ui.Image image = await boundary.toImage(pixelRatio: 5.0);
@@ -101,6 +102,14 @@ Future<bool> takeScreenShot(GlobalKey globalKey) async{
   GallerySaver.saveImage(imgFile.path, albumName: "memedo").then((value){
     return value;
   });
+  if(share){
+    await WcFlutterShare.share(
+        sharePopupTitle: 'share',
+        fileName: 'memedoImage.png',
+        mimeType: 'image/png',
+        text: "Memedo, FOR MAD, Presented By Team algoristy",
+        bytesOfFile: byteData.buffer.asUint8List());
+  }
   return true;
 }
 

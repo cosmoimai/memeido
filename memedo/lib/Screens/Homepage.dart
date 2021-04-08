@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:memedo/SetAndVar/util.dart';
 import 'package:memedo/SetAndVar/variables.dart';
 import 'package:flutter/material.dart';
+import 'package:wc_flutter_share/wc_flutter_share.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -259,7 +260,7 @@ class _HomePageState extends State<HomePage> {
                             duration: Duration(seconds: 3),
                           );
                           _scaffoldKey.currentState.showSnackBar(snackbar);
-                          await takeScreenShot(globalKey).then((value){
+                          await takeScreenShot(globalKey,false).then((value){
                             if(value){
                               final snackBar = SnackBar(
                                 content: Text("Saved."),
@@ -286,7 +287,7 @@ class _HomePageState extends State<HomePage> {
                             duration: Duration(seconds: 3),
                           );
                           _scaffoldKey.currentState.showSnackBar(snackbar);
-                          await takeScreenShot(globalKey).then((value){
+                          await takeScreenShot(globalKey,true).then((value){
                             if(value){
                               final snackBar = SnackBar(
                                 content: Text("Saved."),
@@ -302,11 +303,6 @@ class _HomePageState extends State<HomePage> {
                               _scaffoldKey.currentState.showSnackBar(snackBar);
                             }
                           });
-                          final snackBar = SnackBar(
-                            content: Text("Saved."),
-                            duration: Duration(seconds: 1),
-                          );
-                          _scaffoldKey.currentState.showSnackBar(snackBar);
                           // await Share.file('mememaker$randomNumber.png', 'mememaker$randomNumber.jpg', byteData.buffer.asUint8List(), 'image/png', text: 'Wants to make meme like this? download the app from https://github.com/Tushargupta9800');
                         },
                           child: Row(
