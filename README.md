@@ -6,7 +6,7 @@ Tushar Gupta
 ## Theme Choosen
 ⏲️ Time Management and Productivity
 
-[download apk](https://github.com/cosmoimai/memeido/raw/main/Apk/Memedo.apk)
+[download apk](https://github.com/cosmoimai/memeido/raw/main/Apk/Memedo.apk)<br/><br/>
 [Video Demo](https://youtu.be/mrvofGce_C0)
 
 # ScreenShots
